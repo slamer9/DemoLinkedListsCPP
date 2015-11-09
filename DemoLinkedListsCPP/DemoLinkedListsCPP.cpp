@@ -1,16 +1,22 @@
 // DemoLinkedListsCPP.cpp : Defines the entry point for the console application.
-//
+// Author: Duncan Reeves (revisions made on public copy)
 
 #include "stdafx.h"
 #include <iostream>
 #include <string>
+
+
+
+//Declaration section
+int numberOfCars = 0;
 
 struct trainCar {
 	std::string name;
 	trainCar *next;
 };
 
-void insertCar(int position_in_train, trainCar *start,std::string name) {
+void insertCar(int position_in_train, trainCar *start,std::string name) 
+{
 	// Let's assume we have 10 cars
 	trainCar *newCar = new trainCar;
 	newCar->name = name;
@@ -28,17 +34,33 @@ void insertCar(int position_in_train, trainCar *start,std::string name) {
 	position->next = newCar;
 }
 
-void deleteCar(int position_in_train,trainCar *start) {
+void deleteCar(int position_in_train,trainCar *start) 
+{
+	int
 	
 }
-int countCars(trainCar *start) {
+
+int countCars(trainCar *start) 
+{
+	trainCar *position = start;
+	if (position != 0)
+	{
+		while (position->next != 0)
+		{
+			numberOfCars++;
+			position = position->next;
+		}
+	}
+	return numberOfCars;
 
 }
 
-void printCars(trainCar *start) {
+void printCars(trainCar *start) 
+{
 	trainCar *position = start;
 	if (position != 0) { //Makes sure there is a place to start
-		while (position->next != 0) {
+		while (position->next != 0) 
+		{
 			std::cout << position->name << std::endl;
 			position = position->next;
 		}
@@ -68,7 +90,8 @@ int main()
 	int cars_to_add=10;
 	//std::cin >> cars_to_add;
 
-	for (int x = 1; x <= cars_to_add; x++) {
+	for (int x = 1; x <= cars_to_add; x++) 
+	{
 		position->next = new trainCar;
 		position = position->next;
 		position->next = 0;
@@ -94,7 +117,10 @@ int main()
 
 	position = root;
 	printCars(root);
+
+
 	
+	std::cout << "There are " << countCars(root) << " traincars in the train." << std::endl;
 
 	system("Pause");
 }
