@@ -10,7 +10,8 @@
 //Declaration section
 int numberOfCars = 0;
 
-struct trainCar {
+struct trainCar 
+{
 	std::string name;
 	trainCar *next;
 };
@@ -36,7 +37,7 @@ void insertCar(int position_in_train, trainCar *start,std::string name)
 
 void deleteCar(int position_in_train,trainCar *start) 
 {
-	int
+	//int
 	
 }
 
