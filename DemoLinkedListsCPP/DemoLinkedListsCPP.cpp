@@ -36,7 +36,6 @@ void insertCar(int position_in_train, trainCar *start,std::string name)
 
 void deleteCar(int position_in_train,trainCar *start) 
 {
-	int
 	
 }
 
