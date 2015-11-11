@@ -10,7 +10,7 @@
 //Declaration section
 int numberOfCars = 0;
 
-struct trainCar 
+struct trainCar
 {
 	std::string name;
 	trainCar *next;
@@ -35,9 +35,20 @@ void insertCar(int position_in_train, trainCar *start,std::string name)
 	position->next = newCar;
 }
 
-void deleteCar(int position_in_train,trainCar *start) 
+
+void deleteCar(int position_in_train, trainCar *start) 
 {
-	//int
+
+	if (position_in_train < 1)
+	{
+		std::cout << "Error" << std::endl;
+		system("Pause");
+		return;
+	}
+	while (start->next != 0)
+	{
+
+	}
 	
 }
 
@@ -79,7 +90,8 @@ int main()
 	root->name = "engine";     // By using the -> operator, you can modify the node
 					 //  a pointer (root in this case) points to.
 	position = root;
-	if (position->next != 0) {
+	if (position->next != 0) 
+	{
 		while (position->next != 0)
 		{
 			position = position->next;
@@ -122,6 +134,12 @@ int main()
 
 	
 	std::cout << "There are " << countCars(root) << " traincars in the train." << std::endl;
+
+	//Remove a trian car
+	int chosen_train_car;
+	std::cout << "What train car to you want to remove?" << std::endl;
+	std::cin >> chosen_train_car;
+	deleteCar(chosen_train_car, root);
 
 	system("Pause");
 }
