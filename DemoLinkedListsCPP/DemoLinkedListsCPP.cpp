@@ -10,7 +10,8 @@
 //Declaration section
 int numberOfCars = 0;
 
-struct trainCar {
+struct trainCar
+{
 	std::string name;
 	trainCar *next;
 };
@@ -30,12 +31,40 @@ void insertCar(int position_in_train, trainCar *start,std::string name)
 	}
 	// now we can do the switching
 	newCar->next = position->next;
-	//
 	position->next = newCar;
 }
 
-void deleteCar(int position_in_train,trainCar *start) 
+//Passing in values the user inputed
+void deleteCar(int position_in_train, trainCar *start) 
 {
+	position_in_train--;
+
+	if (position_in_train < 1)
+	{
+		std::cout << "Error, false number type one." << std::endl;
+		system("Pause");
+		return;
+	}
+	for (int i = 0; i < position_in_train; i++) //Get to position
+	{
+		start = start->next;
+		//currentPosition = start;
+	}
+
+	if (start->next != 0)
+	{
+		start->next;
+		start->next = start->next->next;
+	}
+	else
+	{
+		std::cout << "Error, flase number type two." << std::endl;
+		system("Pause");
+		return;
+	}
+
+
+	return;
 	
 }
 
@@ -50,6 +79,7 @@ int countCars(trainCar *start)
 			position = position->next;
 		}
 	}
+	numberOfCars++;
 	return numberOfCars;
 
 }
@@ -77,7 +107,8 @@ int main()
 	root->name = "engine";     // By using the -> operator, you can modify the node
 					 //  a pointer (root in this case) points to.
 	position = root;
-	if (position->next != 0) {
+	if (position->next != 0) 
+	{
 		while (position->next != 0)
 		{
 			position = position->next;
@@ -113,13 +144,22 @@ int main()
 	insertCar(13, root, "New Caboose 2");
 
 
-
+	//Display
 	position = root;
 	printCars(root);
 
-
-	
+	//count cars
 	std::cout << "There are " << countCars(root) << " traincars in the train." << std::endl;
+
+	//Remove a train car
+	int chosen_train_car;
+	std::cout << "What train car to you want to remove? (number after the engine)" << std::endl;
+	std::cin >> chosen_train_car;
+	deleteCar(chosen_train_car, root);
+
+	//Display again
+	printCars(root);
+
 
 	system("Pause");
 }
